@@ -1,38 +1,224 @@
-.App {
+body,.app-wrapper {
+  height: 100vh;
+}
+.text-left {
+  text-align: left;
+}
+.fa-pinterest {
+font-size: 2rem;
+margin-right: 1rem;
+}
+.menu-item {
+  display: flex;
+  margin-left: 3rem !important;
+  gap: 2rem;
+}
+.btn-group {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-right: 1rem;
+}
+
+/* .MuiImageListItem-img {
+  max-height: 200px;
+    min-height: 200px;
+} */
+.top-contnet + ul {
+  overflow: hidden;
+}
+.home-wrap h1 {
+font-size: 85px;
+text-align: center;
+}
+.expand-colapse-icon {
+  position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    
+    cursor: pointer;
+    
+}
+.expand-colapse-icon svg {
+  animation: bounce 1600ms infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    cursor: pointer;
+    height: 48px;
+}
+.animate__slideOutUp {
+  animation-duration: 4s;
+}
+@keyframes bounce {
+  50% {
+      transform: translateY(-15px);
+    }
+  }
+  .expand-colapse-icon svg::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 100%;
+    border-radius: 5px;
+    background: black;
+    transform: rotate(-90deg);
+    transform-origin: 0% 100%;
+  }
+
+.expand-colapse-icon .fa-circle-up {
+  font-size: 48px;
+}
+.blue-color {
+  color: rgb(0, 118, 211);
+}
+.green-color{
+  color: rgb(81, 140, 123);
+}
+.yellow-pink {
+  color: rgb(81, 140, 123);
+}
+.content-wrap ul li:nth-child(2) img, .content-wrap ul li:nth-child(4) img  {
+  margin-top: 80px;
+}
+
+.item1 {
+  animation-delay: 1s;
+}
+.item2 {
+  animation-delay: 1.5s;
+}
+.item4 {
+  animation-delay: 2s;
+}
+.item5 {
+  animation-delay: 3s;
+}
+
+/*#region Home Section 2 */
+.search-sec-wrap {
+  display: flex;
+  gap: 1rem;
+}
+.search-sec-wrap > div {
+  flex-basis: 50%;
+
+}
+.search-left > div {
+  position: relative;
+}
+.search-left {
+  margin-top: 10rem;
+}
+.search-right {
+  padding: 1rem;
+}
+.home-sec-2 {
+  height: 100vh;
+  padding-bottom: 60px;
+  display: inline-block;
+  width: 100%;
+  background-color: rgb(255, 253, 146);
+}
+.img-1 img {
+  position: absolute;
+  right: 0;
+  height: 250px;
+  width: 220px;
+  top: -100px;
+}
+.img-2 img {
+  position: absolute;
+  height: 300px;
+  top: 80px;
+}
+.img-3 img {
+  position: absolute;
+  right: -30px;
+  height: 300px;
+  width: 210px;
+  top: 250px;
+}
+.img-4 img {
+  position: absolute;
+  height: 500px;
+  left: 110px;
+  top: 0px;
+  width: 350px;
+}
+.text-error {
+  color: #d32f2f;
+}
+p.secondary-big {
+  font-size: 1.5rem;
+}
+.text-center {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.search-right  button {
+  float: right;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.img-5-wrap {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 1rem;
+  padding: 24px;
+  background: #fff;
+  position: absolute;
+  top: 230px;
+  left: 115px;
+  font-size: 24px;
+  color: rgb(110, 15, 60);
+  font-weight: bold;
+  border-radius: 40px;
+}
+/*#endregion*/
+
+.signup-sec-wrap {
+  position: relative;
+}
+.img-wrapper {
+  position: absolute;;
+  top: 100%;
+}
+.img-wrapper ul {
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.signup-wrap {
+  position: absolute;
+  top: 75px;
+  width: 500px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 32px;
+  /* position: relative; */
+  text-align: center;
+  margin: auto;
+  min-height: initial;
+  box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
+  transform: translate(-50%);
+  left: 50%;
+}
+.signup-home .signup-wrap {
+  top: 175px;
+  transform: none;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form.form-wrap {
+    padding: 20px;
+}
+.form-wrap .form-group {
+  margin: 0 1rem 1rem 1rem;
+}
+.form-wrap .form-group > div {
+  width: 100%;
+}
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+  font-size: 1.25rem;
+}
+.home-sec-last .fg-psw {
+display: none;
 }
