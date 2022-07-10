@@ -13,12 +13,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
+import { Link } from "react-router-dom";
 const MainDashboard = () => {
   return (
-    <div>
+    <div className="main-dashboard-wrapper">
       <TopSearch />
     </div>
   );
@@ -26,37 +26,30 @@ const MainDashboard = () => {
 
 const TopSearch = (props) => {
   const [counter, setCounter] = useState(0);
-  //   const notificationCounter = () => {
-  //     setCounter(counter + 1);
-  //   };
 
   return (
-    <div className="main-dashboard-wrap">
+    <div className="fixed-bar-wrap">
       <AppBar>
-        <Toolbar>
+        <Toolbar className="fixed-search-wrapper">
           <div className="fixed-search-wrap">
-            <p>
+            <div className="left">
               <i className="fa-brands fa-pinterest"></i>
-            </p>
-            <div className="menu-items">
-              <Button variant="contained">Today</Button>
+              <Link to="/dashboard-home">Home</Link>
+              <Link to="/dashboard-today">Today</Link>
               <CustomizedMenus />
             </div>
-            <div className="search-wrap">
+            <div className="search-wrap center">
               <div className="serch">
                 <i className="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Search" className="ip" />
               </div>
             </div>
-            <div className="icon-set">
-              <div
-                className="badge-wrap"
-                onClick={() => setCounter(counter + 1)}
-              >
+            <div className="icon-set right">
+              <p className="badge-wrap" onClick={() => setCounter(counter + 1)}>
                 <Badge badgeContent={counter} color="error">
                   <NotificationsActiveIcon color="action" />
                 </Badge>
-              </div>
+              </p>
               <p>
                 <i className="fa-solid fa-comment-dots"></i>
               </p>
@@ -116,7 +109,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 function CustomizedMenus() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -132,7 +125,7 @@ function CustomizedMenus() {
         aria-controls={open ? "demo-customized-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        variant="contained"
+        variant="outlined"
         disableElevation
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
@@ -242,4 +235,5 @@ function AccountMenu() {
     </React.Fragment>
   );
 }
+
 export default MainDashboard;

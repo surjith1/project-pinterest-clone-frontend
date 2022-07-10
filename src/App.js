@@ -1,10 +1,10 @@
 import "./App.css";
-import Topbar from "./components/Topbar";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import MainDashboard from "./components/MainDashboard";
+import DashboardHome from "./components/DashboardPages/DashboardHome";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/main-dashboard" element={<MainDashboard />} />
+        <Route path="/dashboard-home" element={<DashboardHome />} />
       </Routes>
     </div>
   );

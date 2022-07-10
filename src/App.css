@@ -1,3 +1,6 @@
+*{
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+}
 body,.app-wrapper {
   height: 100vh;
 }
@@ -222,3 +225,146 @@ form.form-wrap {
 .home-sec-last .fg-psw {
 display: none;
 }
+.home-sec-last .top-bar-wrap {
+  display: none;
+}
+/*#region Main Dashboard */
+.fixed-search-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.left {
+  width: 35%;
+  display: flex;
+    align-items: center;
+}
+.left svg ~ a {
+  margin-right: 1rem;
+  text-decoration: none;
+  border: 1px solid #73a1cf;
+  padding: 6px;
+  border-radius: 3px;
+  font-weight: 500;
+  color: #1976d2;
+}
+.center {
+  width: 100%;
+  margin: 0 1rem;
+}
+.center .serch {
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.center .serch svg {
+  color: #06c;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 1;
+}
+.center .serch input {
+  height: 48px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  position: relative;
+  padding-left: 45px;
+  width: calc(100% - 50px);
+}
+.center .serch input:focus {
+  box-shadow: 0 0 2px 4px #dc00e1;
+}
+.icon-set.right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+  width: 15%;
+}
+.icon-set.right svg {
+  font-size: 2rem;
+}
+.icon-set.right p button {
+  margin: 0;
+  padding: 0;
+}
+
+.fixed-bar-wrap header {
+  background-color: #ccc;
+  color: #000;
+}
+
+.db-home-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+}
+.db-home-item-content {
+  max-width: 300px;
+  position: relative
+}
+.db-home-item img {
+  width: 100%;
+  border-radius: 20px;
+  height: 500px;
+}
+.db-home-item .save {
+  position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 2rem;
+    padding: 1rem;
+}
+.db-home-item-footer {
+  position: absolute;
+  bottom: 50px;
+  display: flex;
+}
+.db-home-item-footer a {
+  max-width: 175px;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px;
+  border-radius: 30px;
+  display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: 1px solid #fff;
+    background: #fff;
+}
+
+.db-home-item-footer button +svg + button {
+  margin: 0;
+}
+.db-home-item-footer a .lan-url {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.db-home-item-footer {
+  position: absolute;
+  bottom: 80px;
+}
+.item-inner-wrap {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.item-inner-wrap svg {
+  color: #fff;
+  font-size: 1.5rem;
+}
+.cus-btn svg {
+  color:#000;
+}
+
+.icon-btn {
+  margin-left: 0px;
+}
+.item-inner-wrap button:last-child {
+    margin-left: 0;
+}
+/*#endregion */
