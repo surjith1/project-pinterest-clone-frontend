@@ -4,9 +4,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../ProtectedRoutes";
 
 const Topbar = () => {
   const navigate = useNavigate();
+  const auth = useAuth();
   return (
     <div className="top-bar-wrap">
       <AppBar position="static">
@@ -21,17 +23,19 @@ const Topbar = () => {
             <span>Blog</span>
           </Typography>
           <div className="btn-group">
+            {auth.login && (
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </Button>
+            )}
             <Button
               variant="contained"
-              color="secondary"
-              type="submit"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
+              color="primary"
               type="submit"
               onClick={() => navigate("/signup")}
             >

@@ -13,9 +13,10 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../ProtectedRoutes";
+import Message from "./DashboardPages/Message";
 const MainDashboard = () => {
   return (
     <div className="main-dashboard-wrapper">
@@ -45,22 +46,24 @@ const TopSearch = (props) => {
               </div>
             </div>
             <div className="icon-set right">
-              <p className="badge-wrap" onClick={() => setCounter(counter + 1)}>
+              <div
+                className="badge-wrap"
+                onClick={() => setCounter(counter + 1)}
+              >
                 <Badge badgeContent={counter} color="error">
                   <NotificationsActiveIcon color="action" />
                 </Badge>
-              </p>
-              <p>
-                <i className="fa-solid fa-comment-dots"></i>
-              </p>
-              <p>
+              </div>
+              <div>
+                <Message />
+              </div>
+              <div>
                 <AccountMenu />
-              </p>
+              </div>
             </div>
           </div>
         </Toolbar>
       </AppBar>
-
       <Toolbar />
     </div>
   );
@@ -161,6 +164,13 @@ function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  let navigate = useNavigate();
+  const auth = useAuth();
+  const handleLogout = () => {
+    auth.logout();
+    navigate("/");
+    localStorage.removeItem("token");
+  };
   return (
     <React.Fragment>
       <Tooltip title="Account settings">
@@ -179,6 +189,7 @@ function AccountMenu() {
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
+        className="account-menu"
         open={open}
         onClose={handleClose}
         onClick={handleClose}
@@ -211,21 +222,15 @@ function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem>
-          <Avatar /> My account
-        </MenuItem>
+        <p style={{ padding: "0 16px", fontSize: "12px" }}>Your Accounts </p>
+        <MenuItem>Add Accounts</MenuItem>
+        <MenuItem>Convert to Business</MenuItem>
         <Divider />
-
-        <MenuItem>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
-        <MenuItem>
+        <p style={{ padding: "0 16px", fontSize: "12px" }}>More Options </p>
+        <MenuItem>Settings</MenuItem>
+        <MenuItem>Turn Your Home Feed</MenuItem>
+        <MenuItem>Install Window App</MenuItem>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

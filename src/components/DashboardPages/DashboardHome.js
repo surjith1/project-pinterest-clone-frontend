@@ -1,15 +1,16 @@
 import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import MainDashboard from "../MainDashboard";
-import IosShareIcon from "@mui/icons-material/IosShare";
 import NorthEastSharpIcon from "@mui/icons-material/NorthEastSharp";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import MoreDetailsMenu from "./MoreDetailsMenu";
+import CustomizedDialogs from "../DialogShare";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { ChartReact } from "../ChartReact";
+
 const DashboardHome = () => {
   const [dbData, setDbData] = useState([]);
+  let navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/pinterest/dashboard-home`)
@@ -22,6 +23,10 @@ const DashboardHome = () => {
   return (
     <div className="db-home-wrapper">
       <MainDashboard />
+   {/*   <div className="chart-section">
+        <ChartReact />
+  </div>*/}
+
       <div className="db-home-page">
         <div className="content-wrapp">
           <ul className="db-home-item">
@@ -29,6 +34,12 @@ const DashboardHome = () => {
               <DBHomeItem data={home} key={home._id} />
             ))}
           </ul>
+          <div
+            className="add-task"
+            onClick={() => navigate("/dbhome-creation")}
+          >
+            <AddCircleIcon title="Add Content" />
+          </div>
         </div>
       </div>
     </div>
@@ -37,6 +48,7 @@ const DashboardHome = () => {
 
 function DBHomeItem({ data }) {
   const [isShown, setIsShown] = useState(false);
+  let navigate = useNavigate();
 
   return (
     <li
@@ -44,76 +56,39 @@ function DBHomeItem({ data }) {
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
-      <img src={data.image} alt={data.title} />
-      <p>{data.title}</p>
+      {isShown && (
+        <Button variant="contained" color="error" className="save">
+          {data.saveText}
+        </Button>
+      )}
+      <img
+        src={data.image}
+        alt={data.title}
+        onClick={() => navigate(`/dashboard-home/${data._id}`)}
+      />
       {isShown && (
         <>
           <div className="db-home-item-footer">
             <div className="item-inner-wrap">
-              <Link
+              <a
                 className="cus-btn"
                 target="_blank"
                 rel="noopener noreferrer"
-                to="data.landingUrl"
+                href={data.landingUrl}
               >
                 <NorthEastSharpIcon />
                 <span className="lan-url">{data.landingUrl}</span>
-              </Link>
-              <IosShareIcon />
-              <AccountMenu />
+              </a>
+              {/* <IosShareIcon />*/}
+              <CustomizedDialogs />
+              <MoreDetailsMenu img={data.image} />
             </div>
           </div>
-
-          <Button variant="contained" color="error" className="save">
-            {data.saveText}
-          </Button>
         </>
       )}
+
+      <p>{data.title}</p>
     </li>
-  );
-}
-
-function AccountMenu() {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  return (
-    <React.Fragment>
-      <Tooltip title="Account settings">
-        <IconButton
-          className="icon-btn"
-          onClick={handleClick}
-          size="small"
-          sx={{ ml: 2 }}
-          aria-controls={open ? "account-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-        >
-          <i className="fa-solid fa-ellipsis"></i>
-        </IconButton>
-      </Tooltip>
-
-      <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-      >
-        <p style={{ padding: "10px" }}>
-          This Pin was inspired by your recent activity
-        </p>
-        <MenuItem>Hide Pin</MenuItem>
-        <MenuItem>Download Images</MenuItem>
-
-        <MenuItem>Report Pin</MenuItem>
-      </Menu>
-    </React.Fragment>
   );
 }
 

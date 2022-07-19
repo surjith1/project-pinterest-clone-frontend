@@ -1,106 +1,89 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { Button } from "@mui/material";
 import { imgList } from "../components/data/imageList";
-import Signup from "./Signup";
+import Signup from "../Signup/Signup";
 import Topbar from "./Topbar";
+import SliderContent from "./SliderContent";
+import ChartsReact from "./ChartReact";
 
 const Home = () => {
-  const itemData = [
-    {
-      images: [
-        {
-          img: "https://i.pinimg.com/550x/c2/5e/31/c25e3114ebf041852be0292200727e92.jpg",
-          title: "Breakfast",
-          classname:
-            "animate__animated animate__slideOutUp animate__infinite item1",
-        },
-        {
-          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA8owI3K-u6YFMwnQDlBs9VrsnKsEa4jD3DA&usqp=CAU",
-          title: "Burger",
-          classname:
-            "animate__animated animate__slideOutUp animate__infinite item2",
-        },
-        {
-          img: "",
-          title: "",
-          classname: "",
-        },
-        {
-          img: "https://i.pinimg.com/550x/ef/bb/b0/efbbb046771ba42cf1df5327bfb963ed.jpg",
-          title: "Camera",
-          classname:
-            "animate__animated animate__slideOutUp animate__infinite item4",
-        },
-        {
-          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA8owI3K-u6YFMwnQDlBs9VrsnKsEa4jD3DA&usqp=CAU",
-          title: "Coffee",
-          classname:
-            "animate__animated animate__slideOutUp animate__infinite item5",
-        },
-      ],
-    },
-    {
-      images: [
-        {
-          img: "https://i.pinimg.com/550x/c2/5e/31/c25e3114ebf041852be0292200727e92.jpg",
-          title: "Breakfast",
-        },
-        {
-          img: "https://i.pinimg.com/550x/9d/dd/50/9ddd50ff3f173ef56a61a7277b50dcbd.jpg",
-          title: "Burger",
-        },
-        {
-          img: "",
-          title: "",
-        },
-        {
-          img: "https://i.pinimg.com/550x/ef/bb/b0/efbbb046771ba42cf1df5327bfb963ed.jpg",
-          title: "Camera",
-        },
-        {
-          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA8owI3K-u6YFMwnQDlBs9VrsnKsEa4jD3DA&usqp=CAU",
-          title: "Coffee",
-        },
-      ],
-    },
-  ];
-
-  const [data, setData] = useState(itemData);
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  const loadData = () => {
-    setData(itemData);
-  };
-
   return (
     <div className="home-wrap">
       <Topbar />
       <div className="content-wrap">
         <h1>Get Your Next</h1>
-        <div className="top-contnet animate__animated animate__heartbeat">
-          <h1 className="blue-color">DYI idea</h1>
-        </div>
-        <ImageList cols={5} gap={8} rowHeight={230}>
-          {data[0].images.map((item) => {
-            return (
-              <ImageListItem key={item.title}>
-                <img
-                  src={`${item.img}`}
-                  srcSet={`${item.img}`}
-                  alt={item.title}
-                  className={item.classname}
-                  loading="lazy"
-                />
-              </ImageListItem>
-            );
-          })}
-        </ImageList>
-        <div className="expand-colapse-icon">
-          <i className="fa-solid fa-circle-up"></i>
+        <div className="slider">
+          <input
+            name="input-slider"
+            id="input-slide-0"
+            type="radio"
+            className="input-slide input-slide-num"
+          />
+          <input
+            name="input-slider"
+            id="input-slide-1"
+            type="radio"
+            className="input-slide input-slide-num"
+          />
+          <input
+            name="input-slider"
+            id="input-slide-2"
+            type="radio"
+            className="input-slide input-slide-num"
+          />
+          <input
+            name="input-slider"
+            id="input-slide-3"
+            type="radio"
+            className="input-slide input-slide-num"
+          />
+          <input
+            name="input-slider"
+            id="input-slide-autoplay"
+            type="radio"
+            className="input-slide"
+            checked
+          />
+          <ul>
+            <li className="slide-0"></li>
+            <li className="slide-1"></li>
+            <li className="slide-2"></li>
+            <li className="slide-3"></li>
+          </ul>
+          <div className="slide-description">
+            <label className="slide-0">
+              <SliderContent heading="DYI Idea" color="blue" />
+            </label>
+            <label className="slide-1">
+              <SliderContent heading="chai time snacks idea" color="brown" />
+            </label>
+            <label className="slide-2">
+              <SliderContent heading="home decor idea" color="green" />
+            </label>
+            <label className="slide-3">
+              <SliderContent heading={"outfit idea"} color="violet" />
+            </label>
+          </div>
+          <div className="slider-arrow-prev">
+            <label className="slide-0" for="input-slide-0"></label>
+            <label className="slide-1" for="input-slide-1"></label>
+            <label className="slide-2" for="input-slide-2"></label>
+            <label className="slide-3" for="input-slide-3"></label>
+          </div>
+          <div className="slider-arrow-next">
+            <label className="slide-0" for="input-slide-0"></label>
+            <label className="slide-1" for="input-slide-1"></label>
+            <label className="slide-2" for="input-slide-2"></label>
+            <label className="slide-3" for="input-slide-3"></label>
+          </div>
+          <div className="slider-dot">
+            <label className="slide-0" for="input-slide-0"></label>
+            <label className="slide-1" for="input-slide-1"></label>
+            <label className="slide-2" for="input-slide-2"></label>
+            <label className="slide-3" for="input-slide-3"></label>
+          </div>
         </div>
       </div>
       <div className="home-sec-2">

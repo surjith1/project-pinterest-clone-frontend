@@ -5,7 +5,8 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Topbar from "./Topbar";
-import Alert from "@mui/material/Alert";
+import MuiAlert from "@mui/material/Alert";
+import { useAuth } from "../ProtectedRoutes";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -15,18 +16,21 @@ const Login = () => {
   });
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
+  const auth = useAuth();
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
+      auth.login(data);
       const url = "http://localhost:5000/auth/login";
       const { data: res } = await axios.post(url, data);
       setSuccess(res.message);
       localStorage.setItem("token", res.data);
-      navigate("/main-dashboard");
+      navigate("/dashboard-home");
     } catch (error) {
       if (
         error.response &&
@@ -37,6 +41,9 @@ const Login = () => {
       }
     }
   };
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
   return (
     <>
       <Topbar />
@@ -84,12 +91,12 @@ const Login = () => {
           )}
           {success && (
             <div className="alert-msg">
-              <Alert onClose={() => {}}>{success}</Alert>
+              <Alert>{success}</Alert>
             </div>
           )}
           <div className="form-group">
             <Button type="submit" variant="contained" color="error" fullWidth>
-              Continue
+              Login
             </Button>
             <h3>OR</h3>
             <p>
@@ -98,6 +105,9 @@ const Login = () => {
                 color="primary"
                 fullWidth
                 startIcon={<FacebookIcon />}
+                href="https://www.facebook.com/login/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Continue with Facebook
               </Button>
@@ -108,6 +118,9 @@ const Login = () => {
                 color="secondary"
                 fullWidth
                 startIcon={<GoogleIcon />}
+                href="https://accounts.google.com/servicelogin"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Continue with Google
               </Button>

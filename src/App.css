@@ -23,11 +23,18 @@ margin-right: 1rem;
   gap: 1rem;
   margin-right: 1rem;
 }
-
-/* .MuiImageListItem-img {
-  max-height: 200px;
-    min-height: 200px;
-} */
+.heading-blue {
+  color: #06c;
+}
+.heading-green {
+color: rgb(81, 140, 123);
+}
+.heading-brown {
+  color: rgb(194, 139, 0);
+}
+.heading-violet {
+  color: rgb(156 39 176);
+}
 .top-contnet + ul {
   overflow: hidden;
 }
@@ -37,7 +44,7 @@ text-align: center;
 }
 .expand-colapse-icon {
   position: absolute;
-    bottom: 8%;
+    bottom: 20%;
     left: 50%;
     transform: translate(-50%, 50%);
     
@@ -206,7 +213,7 @@ p.secondary-big {
 }
 .signup-home .signup-wrap {
   top: 175px;
-  transform: none;
+  transform: translate(-50%);
   
 }
 
@@ -236,7 +243,7 @@ display: none;
   width: 100%;
 }
 .left {
-  width: 35%;
+  /* width: 35%; */
   display: flex;
     align-items: center;
 }
@@ -247,7 +254,7 @@ display: none;
   padding: 6px;
   border-radius: 3px;
   font-weight: 500;
-  color: #1976d2;
+  color: #fff;
 }
 .center {
   width: 100%;
@@ -282,20 +289,21 @@ display: none;
   align-items: center;
   justify-content: flex-end;
   gap: 2rem;
-  width: 15%;
+  /* width: 15%; */
 }
 .icon-set.right svg {
   font-size: 2rem;
+  color:#fff
 }
 .icon-set.right p button {
   margin: 0;
   padding: 0;
 }
 
-.fixed-bar-wrap header {
+/* .fixed-bar-wrap header {
   background-color: #ccc;
   color: #000;
-}
+} */
 
 .db-home-item {
   display: grid;
@@ -309,6 +317,7 @@ display: none;
   width: 100%;
   border-radius: 20px;
   height: 500px;
+  position: relative;
 }
 .db-home-item .save {
   position: absolute;
@@ -316,10 +325,11 @@ display: none;
     right: 10px;
     border-radius: 2rem;
     padding: 1rem;
+    z-index: 1;
 }
 .db-home-item-footer {
-  position: absolute;
-  bottom: 50px;
+  position: relative;
+  bottom: 70px;
   display: flex;
 }
 .db-home-item-footer a {
@@ -344,14 +354,11 @@ display: none;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.db-home-item-footer {
-  position: absolute;
-  bottom: 80px;
-}
 .item-inner-wrap {
   display: flex;
   gap: 10px;
   align-items: center;
+  position: absolute;
 }
 .item-inner-wrap svg {
   color: #fff;
@@ -367,4 +374,249 @@ display: none;
 .item-inner-wrap button:last-child {
     margin-left: 0;
 }
-/*#endregion */
+li {
+  list-style-type: none;
+}
+
+.alert-msg {
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+.MuiAlert-icon.css-1ytlwq5-MuiAlert-icon {
+  margin-right: 6px;
+}
+.db-home-item-content >img {
+  cursor: pointer;
+}
+.db-home-item-content >img:hover {
+  opacity: 0.5;
+  background-color: #000;
+}
+.db-home-item-content >img {
+  cursor: zoom-in;
+}
+.content-wrap {
+    height: 100vh;
+}
+
+.db-home-details-Wrap {
+  margin: 0 7rem;
+}
+.db-details-paper {
+  margin-top: 20px;
+    border-radius: 30px;
+}
+
+.db-details-paper img {
+  border-radius: 30px 0 0 30px;
+  width: 100%;
+}
+.db-details-paper {
+  border-radius: 30px !important;
+}
+.db_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  padding:20px
+}
+img.logo-pic {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.icons-wrap {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.icons-wrap svg {
+  font-size:32px;
+}
+.logo-sec {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-w-name {
+  display: flex;
+  gap: 1rem;
+}
+.icon-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.icon-label svg {
+  font-size: 2rem;
+}
+.comment {
+  position: relative;
+  margin-right: 25px;
+}
+.input-comment {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+}
+.comment input {
+  height: 40px;
+  border-radius: 50px;
+  width: calc(100% - 45px);
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+.comment-text , .comment input {
+  font-size: 20px;
+}
+.comment input + span {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  z-index: 5;
+  font-size: 24px;
+}
+.comment-text {
+  word-break: break-all;
+}
+
+section.container-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding:1rem;
+  box-sizing: border-box;
+}
+.img-wrap {
+    display: flex;
+    /* max-width: 50%; */
+}
+.img-wrap > img {
+  max-width: 170px;
+}
+article h1.text-center {
+  font-size: 32px;
+}
+.download-img {
+  padding: 16px;
+  text-decoration: none;
+  color: #333;
+}
+
+.account-menu p ~ li {
+  font-size: 18px;
+}
+.add-task {
+  top: 75px;
+  position: fixed;
+  right: 10px;
+  cursor: pointer;
+}
+.add-task svg {
+    font-size: 40px;
+    padding: 5px;
+}
+.add-task svg:hover {
+  box-shadow: 0 0 5px 2px #06c;
+  border-radius: 50%;
+  transition: all 1s ease-in-out;
+}
+.content-wrapp {
+  display: grid;
+  grid-template-columns: 95% 5%;
+  gap: 2rem;
+}
+.add-db-home-sec .form-group {
+  padding: 10px;
+    margin: 0 5rem;
+}
+.home-wrap .top-bar-wrap header {
+  background: linear-gradient(45deg, #0f04d7, #a91308);
+}
+.share-icon {
+  cursor: pointer;
+}
+.social-wrapper {
+  /* width: 580px; */
+    display: flex;
+    gap: 50px;
+    /* overflow: hidden; */
+    padding: 10px;
+}
+.MuiDialogContent-root {
+  overflow: hidden;
+}
+.social-wrapper > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.social-wrapper > div > svg {
+  font-size: 48px;
+  cursor: pointer;
+  padding: 5px;
+}
+.social-wrapper > div > svg:hover, .fixed-search-wrap .icon-set.right p:hover {  
+  box-shadow: 0 0 5px 2px #06c;
+  border-radius: 50%;
+  transition: all 1s ease-in-out;
+}
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  max-width: 800px !important;
+}
+.whats-app svg {
+  color: #2e7908;
+}
+.twitter-app svg {
+  color: #06c;
+}
+.insta-app svg {
+  color: #f00;
+}
+.fb-app svg {
+  color: #0053a7;
+}
+.fixed-search-wrap .icon-set.right div {
+  padding: 5px;
+  cursor: pointer;
+}
+.fixed-search-wrap .icon-set.right div :hover {
+  box-shadow:  0 0 5px 2px #fff;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+}
+.msg-content-wrap .form-group {
+  padding: 10px;
+}
+.msg-content-wrap .form-group input {
+  border: 1px solid #06c;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+.msg-btm-sec {
+  margin-top: 18rem;
+}
+.form-group.icons-w-control {
+  display: flex;
+  align-items: center;
+}
+.hide {
+  display:none
+}
+.show {
+  display:block
+}
+.css-azeo8y-MuiAvatar-root {
+  background-color: #fa0e93;
+}
+.chart-wrapper {
+  margin: 0 5vw;
+}
+.more-details-menu ul li {
+  height: 60px;
+}

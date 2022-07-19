@@ -2,19 +2,23 @@ import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Topbar from "./Topbar";
+import Topbar from "../components/Topbar";
+//import styles from "./styles.module.css";
+import MuiAlert from "@mui/material/Alert";
+//import { useAuth } from "../ProtectedRoutes";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const [error, setError] = useState("");
+  //const auth = useAuth();
+  const navigate = useNavigate();
   const [data, setData] = useState({
     email: "",
     password: "",
     age: "",
   });
-  const [success, setSuccess] = useState("");
-  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [msg, setMsg] = useState("");
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -26,9 +30,8 @@ const Signup = () => {
       const url = "http://localhost:5000/users/signup";
 
       const { data: res } = await axios.post(url, data);
-      setSuccess(res.message);
+      setMsg(res.message);
       navigate("/login");
-      console.log(res.message);
     } catch (error) {
       if (
         error.response &&
@@ -39,6 +42,9 @@ const Signup = () => {
       }
     }
   };
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
   return (
     <>
       <Topbar />
@@ -84,12 +90,21 @@ const Signup = () => {
               onChange={handleChange}
             />
           </div>
-          {error && <div className="error_msg">{error}</div>}
-          {success && <div className="successmsg">{success}</div>}
+          {error && (
+            <div className="alert-msg">
+              <Alert severity="error">{error}</Alert>
+            </div>
+          )}
+          {msg && (
+            <div className="alert-msg">
+              <Alert severity="success">{msg}</Alert>
+            </div>
+          )}
           <div className="form-group">
             <Button type="submit" variant="contained" color="error" fullWidth>
               Continue
             </Button>
+
             <h3>OR</h3>
             <p>
               <Button
@@ -97,6 +112,9 @@ const Signup = () => {
                 color="primary"
                 fullWidth
                 startIcon={<FacebookIcon />}
+                href="https://www.facebook.com/login/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Continue with Facebook
               </Button>
@@ -107,6 +125,9 @@ const Signup = () => {
                 color="secondary"
                 fullWidth
                 startIcon={<GoogleIcon />}
+                href="https://accounts.google.com/servicelogin"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Continue with Google
               </Button>
