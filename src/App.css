@@ -620,3 +620,6 @@ article h1.text-center {
 .more-details-menu ul li {
   height: 60px;
 }
+div#basic-menu {
+  margin: 10px;
+}

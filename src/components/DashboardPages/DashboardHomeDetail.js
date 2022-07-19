@@ -19,7 +19,9 @@ const DashboardHomeDetail = () => {
   const { _id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/pinterest/dashboard-home/${_id}`)
+    fetch(
+      `https://project-pinterest-clone.herokuapp.com/api/pinterest/dashboard-home/${_id}`
+    )
       .then((response) => response.json())
       .then((actualData) => {
         setDbData([actualData]);
@@ -64,7 +66,7 @@ const DashboardHomeDetail = () => {
                     <Button
                       variant="outlined"
                       color="primary"
-                      onClick={() => setFollow(follow + 1)}
+                      onClick={() => setFollow(follow + 0.01)}
                     >
                       {home.followText}
                     </Button>

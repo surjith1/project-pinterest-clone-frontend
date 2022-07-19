@@ -26,7 +26,7 @@ const Login = () => {
 
     try {
       auth.login(data);
-      const url = "http://localhost:5000/auth/login";
+      const url = "https://project-pinterest-clone.herokuapp.com/auth/login";
       const { data: res } = await axios.post(url, data);
       setSuccess(res.message);
       localStorage.setItem("token", res.data);

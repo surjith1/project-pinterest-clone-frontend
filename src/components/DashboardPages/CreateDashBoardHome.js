@@ -33,13 +33,16 @@ const CreateDashBoardHome = () => {
   const submitHandle = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:5000/api/pinterest/dashboard-home/createHome`, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://project-pinterest-clone.herokuapp.com/api/pinterest/dashboard-home/createHome`,
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((actualData) => {
         setData([actualData]);

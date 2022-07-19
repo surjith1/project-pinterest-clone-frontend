@@ -6,14 +6,15 @@ import { useNavigate } from "react-router-dom";
 import MoreDetailsMenu from "./MoreDetailsMenu";
 import CustomizedDialogs from "../DialogShare";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { ChartReact } from "../ChartReact";
 
 const DashboardHome = () => {
   const [dbData, setDbData] = useState([]);
   let navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/pinterest/dashboard-home`)
+    fetch(
+      `https://project-pinterest-clone.herokuapp.com/api/pinterest/dashboard-home`
+    )
       .then((response) => response.json())
       .then((actualData) => {
         setDbData(actualData);
@@ -23,7 +24,7 @@ const DashboardHome = () => {
   return (
     <div className="db-home-wrapper">
       <MainDashboard />
-   {/*   <div className="chart-section">
+      {/*   <div className="chart-section">
         <ChartReact />
   </div>*/}
 

@@ -27,7 +27,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const url = "http://localhost:5000/users/signup";
+      const url = "https://project-pinterest-clone.herokuapp.com/users/signup";
 
       const { data: res } = await axios.post(url, data);
       setMsg(res.message);
