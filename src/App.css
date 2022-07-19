@@ -564,9 +564,7 @@ article h1.text-center {
   border-radius: 50%;
   transition: all 1s ease-in-out;
 }
-.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
-  max-width: 800px !important;
-}
+
 .whats-app svg {
   color: #2e7908;
 }
@@ -622,4 +620,7 @@ article h1.text-center {
 }
 div#basic-menu {
   margin: 10px;
+}
+.MuiDialog-container .MuiPaper-root {
+  max-width: 800px !important;
 }
