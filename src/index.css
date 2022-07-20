@@ -113,7 +113,7 @@ code {
 	text-align: center;
 	z-index: 300;
 	font-size: 0;
-	bottom: 30px;
+	bottom: 15px;
     left: 50%;
 }
 .slider > .slider-dot > label {
