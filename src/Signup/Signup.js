@@ -9,7 +9,7 @@ import MuiAlert from "@mui/material/Alert";
 //import { useAuth } from "../ProtectedRoutes";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = ({ BASEURL }) => {
   //const auth = useAuth();
   const navigate = useNavigate();
   const [data, setData] = useState({
@@ -27,7 +27,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const url = "https://project-pinterest-clone.herokuapp.com/users/signup";
+      const url = `${BASEURL}/api/users`;
 
       const { data: res } = await axios.post(url, data);
       setMsg(res.message);

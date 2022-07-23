@@ -8,7 +8,7 @@ import Topbar from "./Topbar";
 import MuiAlert from "@mui/material/Alert";
 import { useAuth } from "../ProtectedRoutes";
 
-const Login = () => {
+const Login = ({ BASEURL }) => {
   const [error, setError] = useState("");
   const [data, setData] = useState({
     email: "",
@@ -26,7 +26,7 @@ const Login = () => {
 
     try {
       auth.login(data);
-      const url = "https://project-pinterest-clone.herokuapp.com/auth/login";
+      const url = `${BASEURL}/api/auth`;
       const { data: res } = await axios.post(url, data);
       setSuccess(res.message);
       localStorage.setItem("token", res.data);

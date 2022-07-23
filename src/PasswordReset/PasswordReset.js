@@ -3,13 +3,13 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import styles from "./styles.module.css";
 
-const PasswordReset = () => {
+const PasswordReset = ({ BASEURL }) => {
   const [validUrl, setValidUrl] = useState(false);
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   const param = useParams();
-  const url = `https://project-pinterest-clone.herokuapp.com/api/password-reset/${param.id}/${param.token}`;
+  const url = `${BASEURL}/api/password-reset/${param.id}/${param.token}`;
 
   useEffect(() => {
     const verifyUrl = async () => {
@@ -43,31 +43,25 @@ const PasswordReset = () => {
   };
 
   return (
-    <Fragment>
-      {validUrl ? (
-        <div className={styles.container}>
-          <form className={styles.form_container} onSubmit={handleSubmit}>
-            <h1>Add New Password</h1>
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              required
-              className={styles.input}
-            />
-            {error && <div className={styles.error_msg}>{error}</div>}
-            {msg && <div className={styles.success_msg}>{msg}</div>}
-            <button type="submit" className={styles.green_btn}>
-              Submit
-            </button>
-          </form>
-        </div>
-      ) : (
-        <h1>404 Not Found</h1>
-      )}
-    </Fragment>
+    <div className={styles.container}>
+      <form className={styles.form_container} onSubmit={handleSubmit}>
+        <h1>Add New Password</h1>
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          required
+          className={styles.input}
+        />
+        {error && <div className={styles.error_msg}>{error}</div>}
+        {msg && <div className={styles.success_msg}>{msg}</div>}
+        <button type="submit" className={styles.green_btn}>
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 

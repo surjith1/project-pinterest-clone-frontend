@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import styles from "./styles.module.css";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ BASEURL }) => {
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
@@ -10,7 +10,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = `https://project-pinterest-clone.herokuapp.com/password-reset`;
+      const url = `${BASEURL}/api/password-reset`;
       const { data } = await axios.post(url, { email });
       setMsg(data.message);
       setError("");
